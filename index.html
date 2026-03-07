@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <section id="login" class="login flex justify-center items-center min-h-screen bg-[#F8FAFC]">
+    <section id="login" class="hidden login flex justify-center items-center min-h-screen bg-[#F8FAFC]">
         <!-- login form -->
         <div class="bg-white my-[60px] p-[32px] gap-[24px] rounded-md">
             <div class="grid place-items-center space-y-3 p-5">
@@ -88,7 +88,7 @@
         </div>
         <!-- login form -->
     </section>
-    <main id="main" class="bg-[#F8FAFC] min-h-screen hidden">
+    <main id="main" class="bg-[#F8FAFC] min-h-screen mx-[245px]">
         <!-- navbar -->
         <div class="navbar bg-base-100 shadow-sm px-15">
             <div class="flex-1">
@@ -106,28 +106,81 @@
                     <i
                         class="fa-solid fa-magnifying-glass text-gray-400 text-sm mr-2 transition-colors group-focus-within:text-blue-500"></i>
 
-                    <input type="text" placeholder="Search issues..."
+                    <input id="input-search" type="text" placeholder="Search issues..."
                         class="w-full text-sm text-gray-700 bg-transparent border-none outline-none placeholder:text-gray-400 focus:ring-0" />
 
                 </div>
                 <!-- search -->
-                <button class="btn btn-primary"> <i class="fa-solid fa-plus"></i> New Issue</button>
+                <button id="search-btn" class="btn btn-primary"></i> Search</button>
             </div>
         </div>
         <!-- navbar -->
         <!-- three button  -->
-        <section class="p-6 mx-[245px] bg-white rounded">
-            <button class="btn btn-primary">All</button>
-            <button class="btn btn-primary">Open</button>
-            <button class="btn btn-primary">Closed</button>
+        <section class="p-6 bg-white rounded shadow-sm">
+            <button onclick="selectIssues('all-btn')" id="all-btn" class="btn-three btn btn-primary">All</button>
+            <button onclick="selectIssues('open')" id="open" class="btn-three btn btn-outline">Open</button>
+            <button onclick="selectIssues('closed')" id="closed" class="btn-three btn btn-outline">Closed</button>
         </section>
         <!-- three button  -->
 
         <!-- card and total bar -->
+        <div>
+            <div class="flex justify-between bg-white mt-4 p-4 shadow-sm mb-4">
+                <!-- total bar -->
+                <div class="flex gap-4 items-center">
+                    <img class="h-[32px] w-[32px]" src="./assets/Aperture.png" alt="">
+                    <div>
+                        <h2 class="text-xl font-bold">50 Issues</h2>
+                        <p class="text-[#64748B]">Track and manage your project issues</p>
+                    </div>
+                </div>
 
+                <div class="flex justify-end items-center gap-3">
+                    <h3><i class="fa-solid fa-circle text-[#00A96E]"></i>Open</h3>
+                    <h3><i class="fa-solid fa-circle text-[#A855F7]"></i>Closed</h3>
+                </div>
+            </div>
+            <!-- total bar -->
+            <!-- card -->
+            <div id="card-container" class="grid grid-cols-4 p-4 rounded gap-4">
+
+                <!-- inner card -->
+
+                <!-- <div class="bg-white p-4 space-y-4 border-t-4 border-green-800 rounded-md">
+                    <div class="flex justify-between">
+                        <img src="./assets/Open-Status.png" alt="">
+                        <h3 class="bg-red-200 rounded text-red-600">HIGH</h3>
+                    </div>
+                    <h2 class="text-xl font-bold">Fix navigation menu on mobile devices</h2>
+                    <p class="text-[#64748B] line-clamp-2">The navigation menu doesn't collapse properly on mobile
+                        devices Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dolore pariatur labore!
+                        Cumque dolorum aperiam explicabo molestiae illum quasi pariatur?
+                    </p>
+                    <div class="flex border-b border-gray-300 p-4">
+                        <h2>BUG</h2>
+                        <h2>HELP WANTED</h2>
+                    </div>
+                    <div class="mt-4">
+                    <p class="text-[#64748B]">#1
+                        by john_doe</p>
+                    <p class="text-[#64748B]">1/15/2024</p>
+                    </div>
+                </div> -->
+                <!-- inner card -->
+
+            </div>
+            <!-- card -->
+
+        </div>
         <!-- card and total bar -->
+
+        <!-- modal -->
+        <!-- You can open the modal using ID.showModal() method -->
+
+        <!-- modal -->
     </main>
     <script src="./script/login.js"></script>
+    <script src="./script/main.js"></script>
 </body>
 
 </html>
