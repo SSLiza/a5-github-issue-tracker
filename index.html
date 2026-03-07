@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <section class="login flex justify-center items-center min-h-screen bg-[#F8FAFC]">
+    <section id="login" class="login flex justify-center items-center min-h-screen bg-[#F8FAFC]">
         <!-- login form -->
         <div class="bg-white my-[60px] p-[32px] gap-[24px] rounded-md">
             <div class="grid place-items-center space-y-3 p-5">
@@ -44,15 +44,15 @@
             <fieldset class="fieldset bg-white rounded-box w-xs">
 
                 <label class="text-[#1F2937] font-medium text-base">Username</label>
-                <input type="email" class="input" placeholder="Enter Username" />
+                <input id="admin" type="email" class="input" placeholder="Enter Username" />
                 <small class="hint font-medium font-regular text-[#4A00FF]">Default: admin</small>
 
                 <label class="text-[#1F2937] font-medium text-base">Password</label>
-                <input type="password" class="input" placeholder="Enter Password" />
+                <input id="password" type="password" class="input" placeholder="Enter Password" />
                 <small class="hint font-medium text-[#4A00FF]">Default: admin123</small>
 
 
-                <button class="btn btn-primary mt-4">Login</button>
+                <button id="login-btn" class="btn btn-primary mt-4">Login</button>
             </fieldset>
             <div class="grid place-items-center space-y-3 p-5">
                 <!-- or div -->
@@ -88,6 +88,46 @@
         </div>
         <!-- login form -->
     </section>
+    <main id="main" class="bg-[#F8FAFC] min-h-screen hidden">
+        <!-- navbar -->
+        <div class="navbar bg-base-100 shadow-sm px-15">
+            <div class="flex-1">
+                <div class="flex h-[37px] w-[36px]">
+                    <img src="./assets/github-logo.png" alt="">
+                    <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <!-- <input type="text" placeholder='' class="input input-bordered w-24 md:w-auto" /> -->
+                <!-- search -->
+                <div
+                    class="flex items-center w-full max-w-sm px-3 py-1.5 bg-white border border-gray-300 rounded-md transition-all focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 group">
+
+                    <i
+                        class="fa-solid fa-magnifying-glass text-gray-400 text-sm mr-2 transition-colors group-focus-within:text-blue-500"></i>
+
+                    <input type="text" placeholder="Search issues..."
+                        class="w-full text-sm text-gray-700 bg-transparent border-none outline-none placeholder:text-gray-400 focus:ring-0" />
+
+                </div>
+                <!-- search -->
+                <button class="btn btn-primary"> <i class="fa-solid fa-plus"></i> New Issue</button>
+            </div>
+        </div>
+        <!-- navbar -->
+        <!-- three button  -->
+        <section class="p-6 mx-[245px] bg-white rounded">
+            <button class="btn btn-primary">All</button>
+            <button class="btn btn-primary">Open</button>
+            <button class="btn btn-primary">Closed</button>
+        </section>
+        <!-- three button  -->
+
+        <!-- card and total bar -->
+
+        <!-- card and total bar -->
+    </main>
+    <script src="./script/login.js"></script>
 </body>
 
 </html>
