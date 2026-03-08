@@ -20,7 +20,6 @@ const fruits = [
   'lichi'
 ];
 const bar = [...fruits];
-are the spread operator syntax.
 
 console.log(bar);
 ```

@@ -64,7 +64,7 @@ function displayCards(cards) {
                 ${element.status == 'open' ? 'border-green-800' : 'border-purple-800'
             } rounded-md">
                     <div class="flex justify-between">
-                        <div>${element.status == 'open' ? `<img src="/assets/Open-Status.png"` : `<img src="/assets/Closed- Status .png"`}/></div>
+                        <div>${element.status == 'open' ? `<img src="./assets/Open-Status.png"` : `<img src="./assets/Closed- Status .png"`}/></div>
                         <h3 class="rounded px-2
 ${element.priority === 'high'
                 ? 'bg-red-200 text-red-600'
