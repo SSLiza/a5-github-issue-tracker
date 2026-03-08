@@ -2,21 +2,21 @@ const threeBtn = document.querySelectorAll('.btn-three')
 
 let allIssues = [];
 
-// threeBtn.forEach(btn => {
-//     btn.onclick = () => selectCategory(btn)
-// })
-
-
-// const selectCategory = (button) => {
-//     threeBtn.forEach(btn => {
-//         btn.classList.remove("btn-primary");
-//         btn.classList.add("btn-outline");
-//     })
-//     button.classList.add("btn-primary");
-//     button.classList.remove("btn-outline");
-// }
+//loading
+function showLoading() {
+    const loadingSpinnerContainer = document.getElementById('loadingSpinner');
+    const cardContainer = document.getElementById('card-container');
+    
+    if (loadingSpinnerContainer) loadingSpinnerContainer.classList.remove("hidden");
+    if (cardContainer) cardContainer.innerHTML = "";
+}
+function hideLoading() {
+  const loadingSpinner = document.getElementById('loadingSpinner');
+  loadingSpinner.classList.add("hidden");
+}
 
 async function loadCards() {
+    showLoading();
     const cardContainer = document.getElementById('card-container')
     const res = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
     const data = await res.json()
@@ -24,9 +24,11 @@ async function loadCards() {
     allIssues = data.data;
     updateTotalCount(allIssues.length);
     displayCards(allIssues)
+     hideLoading();
 }
 
 async function selectIssues(status) {
+    showLoading();
     threeBtn.forEach((btn) => {
         btn.classList.remove("btn-primary");
         btn.classList.add("btn-outline");
@@ -44,9 +46,9 @@ async function selectIssues(status) {
         filtered = allIssues.filter(item => item.status === status);
     }
 
-    // C. Re-render the UI
     displayCards(filtered);
     updateTotalCount(filtered.length);
+     hideLoading();
 
 }
 
@@ -155,10 +157,10 @@ async function openModal(id) {
     const priority = document.getElementById('priority');
     priority.textContent = issue.priority.toUpperCase();
     priority.className = `${issue.priority === 'high'
-            ? 'bg-red-700 text-red-300 rounded-md flex justify-center'
-            : issue.priority === 'medium'
-                ? 'bg-yellow-700 text-yellow-300 rounded-md flex justify-center'
-                : 'bg-gray-300 text-gray-700 rounded-md flex justify-center'
+        ? 'bg-red-700 text-red-300 rounded-md flex justify-center'
+        : issue.priority === 'medium'
+            ? 'bg-yellow-700 text-yellow-300 rounded-md flex justify-center'
+            : 'bg-gray-300 text-gray-700 rounded-md flex justify-center'
         }`;
 
     document.getElementById('my_modal_3').showModal();

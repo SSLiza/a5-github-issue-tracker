@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <section id="login" class="hidden login flex justify-center items-center min-h-screen bg-[#F8FAFC]">
+    <section id="login" class="login flex justify-center items-center min-h-screen bg-[#F8FAFC]">
         <!-- login form -->
         <div class="bg-white my-[60px] p-[32px] gap-[24px] rounded-md">
             <div class="grid place-items-center space-y-3 p-5">
@@ -88,7 +88,7 @@
         </div>
         <!-- login form -->
     </section>
-    <main id="main" class="bg-[#F8FAFC] min-h-screen mx-0 md:mx-10 lg:mx-[120px] xl:mx-[245px]">
+    <main id="main" class="hidden bg-[#F8FAFC] min-h-screen mx-0 md:mx-10 lg:mx-[120px] xl:mx-[245px]">
         <!-- navbar -->
         <div class="navbar bg-base-100 shadow-sm px-4 md:px-10 flex-col lg:flex-row gap-4 py-4 md:py-2 sticky top-0">
             <div class="flex-1">
@@ -100,10 +100,10 @@
             <div class="flex gap-2">
                 <!-- <input type="text" placeholder='' class="input input-bordered w-24 md:w-auto" /> -->
                 <!-- search -->
-                <div
-                    class="flex items-center w-full max-w-sm px-3 py-1.5 bg-white border border-gray-300 rounded-md transition-all focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 group"
-
-                    <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm mr-2 transition-colors group-focus-within:text-blue-500"></i>
+                <div class="flex items-center w-full max-w-sm px-3 py-1.5 bg-white border border-gray-300 rounded-md transition-all focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 group"
+                    <i
+                    class="fa-solid fa-magnifying-glass text-gray-400 text-sm mr-2 transition-colors group-focus-within:text-blue-500">
+                    </i>
 
                     <input id="input-search" type="text" placeholder="Search issues..."
                         class="w-full text-sm text-gray-700 bg-transparent border-none outline-none placeholder:text-gray-400 focus:ring-0" />
@@ -124,7 +124,8 @@
 
         <!-- card and total bar -->
         <div>
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white mt-4 p-6 shadow-sm mb-4 gap-4">
+            <div
+                class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white mt-4 p-6 shadow-sm mb-4 gap-4">
                 <!-- total bar -->
                 <div class="flex gap-4 items-center">
                     <img class="h-[32px] w-[32px]" src="./assets/Aperture.png" alt="">
@@ -141,7 +142,8 @@
             </div>
             <!-- total bar -->
             <!-- card -->
-            <div id="card-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 rounded gap-4">
+            <div id="card-container"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 rounded gap-4">
 
                 <!-- inner card -->
 
@@ -169,6 +171,9 @@
 
             </div>
             <!-- card -->
+             <div id="loadingSpinner" class="h-[60vh] flex hidden justify-center items-center">
+                    <span class="loading loading-dots loading-xl"></span>
+            </div>
 
         </div>
         <!-- card and total bar -->
@@ -192,7 +197,8 @@
 
                 <p id="modalDescription" class="py-4 text-gray-700"></p>
 
-                <div class="bg-gray-100 flex flex-col sm:flex-row p-5 justify-between items-start sm:items-center gap-4">
+                <div
+                    class="bg-gray-100 flex flex-col sm:flex-row p-5 justify-between items-start sm:items-center gap-4">
                     <div>
                         <p class="text-md font-semibold text-[#64748B]">Assignee:</p>
                         <p id="assigneeName"></p>
@@ -206,10 +212,10 @@
 
                 <div class="modal-action mt-2">
                     <form method="dialog">
-                    <button class="btn btn-primary btn-sm">Close</button>
-                </form>
+                        <button class="btn btn-primary btn-sm">Close</button>
+                    </form>
                 </div>
-                
+
             </div>
         </dialog>
         <!-- modal -->
