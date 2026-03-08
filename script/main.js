@@ -56,6 +56,7 @@ function displayCards(cards) {
     cardContainer.innerHTML = '';
     cards.forEach((element) => {
         const card = document.createElement("div");
+        card.onclick = () => openModal(element.id);
         card.innerHTML = `
                 <div class="bg-white p-4 space-y-4 border-t-4 
                 ${element.status == 'open' ? 'border-green-800' : 'border-purple-800'
@@ -77,7 +78,7 @@ ${element.priority.toUpperCase()}
                     ${element.description}
                     </p>
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
-                    ${element.labels.map(label => `<span class="bg-gray-100 px-2 py-0.5 rounded text-[10px] font-bold text-gray-500 uppercase">${label}</span>`).join('')}
+                    ${element.labels.map(label => `<span class="bg-yellow-100 px-2 py-0.5 rounded text-[10px] font-bold text-yellow-500 uppercase">${label}</span>`).join('')}
                 </div>
                     <div class="mt-4">
                     <p class="text-[#64748B]">#${element.id} by ${element.author}</p>
@@ -110,17 +111,17 @@ loadCards()
 const performSearch = () => {
     const input = document.getElementById("input-search");
     if (!input) return;
-    
+
     const term = input.value.trim().toLowerCase();
 
-        const activeBtn = Array.from(threeBtn).find(btn => btn.classList.contains('btn-primary'));
+    const activeBtn = Array.from(threeBtn).find(btn => btn.classList.contains('btn-primary'));
     const currentStatus = activeBtn ? activeBtn.id : 'all-btn';
-    
+
     const filteredIssues = allIssues.filter(issue => {
         const matchesSearch = issue.title.toLowerCase().includes(term)
-        
+
         const matchesStatus = (currentStatus === 'all-btn') || (issue.status === currentStatus);
-        
+
         return matchesSearch && matchesStatus;
     });
 
@@ -128,14 +129,37 @@ const performSearch = () => {
     updateTotalCount(filteredIssues.length);
 };
 
-const searchBtn = document.getElementById('search-btn');
-if (searchBtn) {
-    searchBtn.addEventListener('click', performSearch);
-}
 const searchInput = document.getElementById('input-search');
 if (searchInput) {
     searchInput.addEventListener('input', performSearch);
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') performSearch();
     });
+}
+
+async function openModal(id) {
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const result = await res.json();
+    const issue = result.data;
+
+    document.getElementById('modalTitle').textContent = issue.title;
+    document.getElementById('modalDescription').textContent = issue.description;
+    document.getElementById('modalAuthor').textContent = `opened By ${issue.author}`;
+    document.getElementById('modalStatus').textContent = issue.status.toUpperCase();
+    document.getElementById('assigneeName').textContent = issue.assignee || 'Unassigned';
+    document.getElementById('priority').textContent = issue.priority;
+
+    document.getElementById('modalLabels').textContent = issue.labels.join(', ');
+
+    const priority = document.getElementById('priority');
+    priority.textContent = issue.priority.toUpperCase();
+    priority.className = `${issue.priority === 'high'
+            ? 'bg-red-700 text-red-300 rounded-md flex justify-center'
+            : issue.priority === 'medium'
+                ? 'bg-yellow-700 text-yellow-300 rounded-md flex justify-center'
+                : 'bg-gray-300 text-gray-700 rounded-md flex justify-center'
+        }`;
+
+    document.getElementById('my_modal_3').showModal();
 }
