@@ -151,6 +151,7 @@ async function openModal(id) {
     document.getElementById('modalStatus').textContent = issue.status.toUpperCase();
     document.getElementById('assigneeName').textContent = issue.assignee || 'Unassigned';
     document.getElementById('priority').textContent = issue.priority;
+    document.getElementById('modalDate').textContent = new Date(issue.createdAt).toLocaleDateString()
 
     document.getElementById('modalLabels').textContent = issue.labels.join(', ');
 
